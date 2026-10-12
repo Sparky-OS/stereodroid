@@ -1,5 +1,7 @@
 # StereoDroid
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23309026.svg)](https://doi.org/10.5281/zenodo.23309026)
+
 StereoDroid is a planned way to use an Android phone in a Cardboard-style viewer as a head-tracked VR headset for SteamVR on Linux. ALVR will send video from the PC to PhoneVR on the phone, while the phone sends head pose and commands back. The phone uses its sensors for head tracking and reprojects the last received frame while the next one is in transit.
 
 The project is planned as a contribution to current ALVR upstream, including bringing PhoneVR up to date with it, and as Linux and Sparky Stereo OS packaging. The name was reserved on 2026-10-10. Nothing is built yet.
