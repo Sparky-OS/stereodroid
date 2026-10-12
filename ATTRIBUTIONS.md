@@ -43,3 +43,9 @@ Checked 2026-10-11. The flat display and movie path have emulated proofs. Tracke
 ## Shared flat-display receiver
 
 The common phone display work extends Fabian Druschke's KDE Connect [desktop !996](https://invent.kde.org/network/kdeconnect-kde/-/merge_requests/996) and [Android !673](https://invent.kde.org/network/kdeconnect-android/-/merge_requests/673), under KDE's GPL alternatives. It uses the same FreeRDP, KRdp, KPipeWire and KWin components credited in [Flat Headset](https://github.com/Sparky-OS/flat-headset/blob/master/ATTRIBUTIONS.md). The flat-display receiver is not the later ALVR/PhoneVR tracked client.
+
+## Current ALVR migration study (2026-10-12)
+
+The migration continues Harsha Raghu's [PhoneVR PR #410](https://github.com/PhoneVR-Developers/PhoneVR/pull/410), pinned at `2a2ecf5ee9a8e49e35fcdaeb97b9488e0eb135fb`, against official ALVR `ebec107b7e5f81677fb9c631d239daf2110bf573`.
+Its C API and isolated synthetic-pose checks identify work still required; they do not establish a functioning current-ALVR headset client.
+Harsha Raghu's name comes from the PR commits' author records.
