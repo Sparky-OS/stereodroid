@@ -44,8 +44,12 @@ Checked 2026-10-11. The flat display and movie path have emulated proofs. Tracke
 
 The common phone display work extends Fabian Druschke's KDE Connect [desktop !996](https://invent.kde.org/network/kdeconnect-kde/-/merge_requests/996) and [Android !673](https://invent.kde.org/network/kdeconnect-android/-/merge_requests/673), under KDE's GPL alternatives. It uses the same FreeRDP, KRdp, KPipeWire and KWin components credited in [Flat Headset](https://github.com/Sparky-OS/flat-headset/blob/master/ATTRIBUTIONS.md). The flat-display receiver is not the later ALVR/PhoneVR tracked client.
 
-## Current ALVR migration study (2026-10-12)
+## Current ALVR migration and emulated proof (2026-10-12)
 
 The migration continues Harsha Raghu's [PhoneVR PR #410](https://github.com/PhoneVR-Developers/PhoneVR/pull/410), pinned at `2a2ecf5ee9a8e49e35fcdaeb97b9488e0eb135fb`, against official ALVR `ebec107b7e5f81677fb9c631d239daf2110bf573`.
-Its C API and isolated synthetic-pose checks identify work still required; they do not establish a functioning current-ALVR headset client.
+The continuation builds a matching x86_64 client/server and checks every captured eye pixel through startup, retained-frame reprojection and Activity pause/resume. It uses injected poses; physical sensors, ARM APKs, optics, game compatibility and device latency remain unqualified. The PhoneVR and ALVR developers retain credit for the transport, decoder and lifecycle this work extends.
 Harsha Raghu's name comes from the PR commits' author records.
+
+The following PC audio proposals credit PipeWire and libmysofa contributors, the MIT KEMAR dataset, Fons Adriaensen's AMB-Plugins (GPL-2.0-or-later), Richard W. E. Furse and Paul Barton-Davis for the LADSPA header (LGPL-2.1-or-later), and IEM/Graz and the IEM Plug-in Suite developers including SceneRotator author Daniel Rudrich (GPL-3.0-or-later).
+The isolated measurements cover PipeWire control replay and an AMB impulse rotator; the IEM processor route and a continuously head-tracked multichannel mix remain proposals.
+Names and licences come from the projects' own records and Debian copyright files.
