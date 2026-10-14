@@ -53,3 +53,11 @@ Harsha Raghu's name comes from the PR commits' author records.
 The following PC audio proposals credit PipeWire and libmysofa contributors, the MIT KEMAR dataset, Fons Adriaensen's AMB-Plugins (GPL-2.0-or-later), Richard W. E. Furse and Paul Barton-Davis for the LADSPA header (LGPL-2.1-or-later), and IEM/Graz and the IEM Plug-in Suite developers including SceneRotator author Daniel Rudrich (GPL-3.0-or-later).
 The isolated measurements cover PipeWire control replay and an AMB impulse rotator; the IEM processor route and a continuously head-tracked multichannel mix remain proposals.
 Names and licences come from the projects' own records and Debian copyright files.
+
+## Launcher icon
+
+The StereoDroid icon is original vector artwork by Sparky Stereo, by Daniel Ramos and partners.
+Daniel Ramos directs the work; OpenAI GPT-6 Astra, through Codex, drew it, and Anthropic's Claude Sonnet, through Claude Code, integrated it (2026-10-14).
+It carries no third-party badge and no Sparky logo.
+The Oxygen icon theme (David Miller, David Vignoni, Johann Ollivier Lapeyre, Kenneth Wimer, Nuno Pinheiro and Riccardo Iaconelli, per Debian's copyright record) was a style reference only; no Oxygen artwork was copied.
+The artwork is licensed CC-BY-SA-4.0 (Daniel's decision, 2026-10-14).
