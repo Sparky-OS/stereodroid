@@ -20,6 +20,12 @@ The user can recenter from a PC hotkey or gamepad combination. Phone settings wi
 
 While the phone is in the viewer, touch input is disabled and the gamepad connects to the PC. The phone's volume keys control display brightness while the app is in the foreground, without special permission. Brightness can also be controlled from KDE over the command channel. The same channel may report battery level and temperature and support do-not-disturb, keep-screen-on, lens, and eye-distance settings. Battery and temperature reporting is a proposal for review. Heat will be a user setting: “Automatic (ease off when hot)” or “Full power until it drops.”
 
+## The viewer
+
+The phone goes into a Cardboard-style viewer: a holder with two lenses.
+Such viewers cost little and are sold almost everywhere: a [search for "vr glasses for smartphone" on AliExpress](https://www.aliexpress.com/w/wholesale-vr-glasses-for-smartphone.html) opens in your own country and shows what is on sale there.
+[Flat Headset](https://github.com/Sparky-OS/flat-headset), which already works, is tested with a VR Shinecon viewer.
+
 ## Sound
 
 The sound setting will read “Sound: on the PC (recommended) / streamed to the phone.” Sound stays on the PC by default and plays through the user's headphones or speakers. The phone receives video and sends head pose and commands, without audio decode or Bluetooth transmission on the phone. This reduces phone work, streaming, and battery use. A large-battery, high-DPI phone is a good fit. Bluetooth can add about 100–200 ms of sound delay unless a low-latency codec such as aptX Low Latency or LC3/LE Audio is used, or a dongle headset is used. Both paths need measurement.
