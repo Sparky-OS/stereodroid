@@ -24,6 +24,7 @@ While the phone is in the viewer, touch input is disabled and the gamepad connec
 
 The phone goes into a Cardboard-style viewer: a holder with two lenses.
 Such viewers cost little and are sold almost everywhere: a [search for "vr glasses for smartphone" on AliExpress](https://www.aliexpress.com/w/wholesale-vr-glasses-for-smartphone.html) opens in your own country and shows what is on sale there.
+The same search also lists headsets that come with their own screens: the kind meant here is the open one, with a front that opens so a phone fits inside.
 [Flat Headset](https://github.com/Sparky-OS/flat-headset), which already works, is tested with a VR Shinecon viewer.
 
 ## Sound
