@@ -1,16 +1,16 @@
 # Attributions
 
-StereoDroid is planned to use or build on the projects below. Contributor names are copied from project records and full-history `git shortlog -sn` output. The shortlog counts commits by recorded author. It does not show the amount or exact kind of work by each person.
+StereoDroidVR builds on or has studied the projects below. Historical ALVR/PhoneVR work is credited separately from the current paired RDP design. Contributor names are copied from project records and full-history `git shortlog -sn` output. The shortlog counts commits by recorded author. It does not show the amount or exact kind of work by each person.
 
 ## ALVR
 
-[ALVR](https://github.com/alvr-org/ALVR) provides the planned PC streaming server and client connection. StereoDroid's work is planned as an upstream contribution to current ALVR. The relevant server and client paths checked were `alvr/server_openvr`, `alvr/client_core`, and `alvr/server_io`.
+[ALVR](https://github.com/alvr-org/ALVR) provided the transport studied in the earlier PhoneVR experiments. It is a use-only reference, not the transport of the current RDP design; no contribution is planned. The relevant server and client paths checked were `alvr/server_openvr`, `alvr/client_core`, and `alvr/server_io`.
 
 The contributors returned for those paths are Riccardo Zaglia, zmerp, zarik5, Max Thomas, Leonhard Saam, Meister1593, Harsha Raghu, Yury, Vixea, JellyfishKnight, Liu Han, Luca Schlecker, Mathew Tkachuk, Okabintaro, Romain Roffé, besauce, diekleinekuh, eyJhb, galister, 0forks, 20kdc, Alexey "Cave Johnson" Kolesnikov, Baptiste Lartigau, Barnaby, Deandre Thomas, E1int, HoLo85, Jarett Millard, Keegan Boldt, Ričards Šašalevičs, Stu Charlton, failboat78, skryvel, szneqz, vaughan, vdi, wsippel, yoyobuae, and 黯然销魂code. ALVR's README states that it is licensed under the MIT License.
 
 ## PhoneVR
 
-[PhoneVR](https://github.com/PhoneVR-Developers/PhoneVR) is the planned Android headset client. Its README describes the ALVR mode as using the Google Cardboard API and names Alvr-org as the ALVR server developer. The contributors returned for `code/mobile/android/PhoneVR` and `code/common`, excluding the dependency bot, are Harsha Raghu, Rohit Panchal, ShootingKing-AM, thezofx, Nick, Riccardo Zaglia, and verypurple. The repository LICENSE is GNU GPL version 3.
+[PhoneVR](https://github.com/PhoneVR-Developers/PhoneVR) is the Android headset client used in the earlier ALVR experiments. Its README describes the ALVR mode as using the Google Cardboard API and names Alvr-org as the ALVR server developer. The contributors returned for `code/mobile/android/PhoneVR` and `code/common`, excluding the dependency bot, are Harsha Raghu, Rohit Panchal, ShootingKing-AM, thezofx, Nick, Riccardo Zaglia, and verypurple. The repository LICENSE is GNU GPL version 3.
 
 ## Cardboard SDK
 
@@ -18,7 +18,7 @@ The phone client is planned to use the [Cardboard SDK](https://github.com/google
 
 ## SteamVR and OpenVR
 
-StereoDroid will use Valve's [SteamVR](https://store.steampowered.com/app/250820/SteamVR/) runtime and the [OpenVR SDK](https://github.com/ValveSoftware/openvr) interface. OpenVR's README describes the SDK as an API and samples, with the runtime provided by SteamVR. The OpenVR repository credits Valve Corporation and its shortlog names Joe Ludwig, Jeremy Selan, Charles Lohr, Aaron Leiby, Alex Hopmann, Nat Brown, Dan Ginsburg, Gabe Rowe, Jeep Barnett, Keith Bradner, and Nathan Nuber. The OpenVR LICENSE is BSD 3-Clause. SteamVR runtime source is not part of the OpenVR SDK repository.
+The work studies Valve's [SteamVR](https://store.steampowered.com/app/250820/SteamVR/) runtime and the [OpenVR SDK](https://github.com/ValveSoftware/openvr) interface. OpenVR's README describes the SDK as an API and samples, with the runtime provided by SteamVR. The OpenVR repository credits Valve Corporation and its shortlog names Joe Ludwig, Jeremy Selan, Charles Lohr, Aaron Leiby, Alex Hopmann, Nat Brown, Dan Ginsburg, Gabe Rowe, Jeep Barnett, Keith Bradner, and Nathan Nuber. The OpenVR LICENSE is BSD 3-Clause. SteamVR runtime source is not part of the OpenVR SDK repository.
 
 ## Universal Media Server
 
@@ -38,11 +38,11 @@ Sparky Stereo OS's credits are in its [ATTRIBUTIONS.md](https://github.com/Spark
 
 The [MediaServer:4 and MediaRenderer:3 specifications](https://openconnectivity.org/developer/specifications/upnp-resources/upnp/mediaserver4-and-mediarenderer3/) are credited to the UPnP Forum, Open Connectivity Foundation and Digital Living Network Alliance. Implementation proofs do not imply DLNA certification.
 
-Checked 2026-10-11. The flat display and movie path have emulated proofs. Tracked StereoDroid work and physical-device qualification remain separate.
+Checked 2026-10-11. The flat display and movie path have emulated proofs. Tracked StereoDroidVR work and physical-device qualification remain separate.
 
 ## Shared flat-display receiver
 
-The common phone display work extends Fabian Druschke's KDE Connect [desktop !996](https://invent.kde.org/network/kdeconnect-kde/-/merge_requests/996) and [Android !673](https://invent.kde.org/network/kdeconnect-android/-/merge_requests/673), under KDE's GPL alternatives. It uses the same FreeRDP, KRdp, KPipeWire and KWin components credited in [Flat Headset](https://github.com/Sparky-OS/flat-headset/blob/master/ATTRIBUTIONS.md). The flat-display receiver is not the later ALVR/PhoneVR tracked client.
+The common phone display work extends Fabian Druschke's KDE Connect [desktop !996](https://invent.kde.org/network/kdeconnect-kde/-/merge_requests/996) and [Android !673](https://invent.kde.org/network/kdeconnect-android/-/merge_requests/673), under KDE's GPL alternatives. It uses the same FreeRDP, KRdp, KPipeWire and KWin components credited in [Flat Headset](https://github.com/Sparky-OS/flat-headset/blob/master/ATTRIBUTIONS.md). Its RDP sensor extension is a foundation for the tracked program; the earlier ALVR/PhoneVR client uses a different transport.
 
 ## Current ALVR migration and emulated proof (2026-10-12)
 
@@ -56,7 +56,7 @@ Names and licences come from the projects' own records and Debian copyright file
 
 ## Launcher icon
 
-The StereoDroid icon is original vector artwork by Sparky Stereo, by Daniel Ramos and partners.
+The StereoDroidVR icon is original vector artwork by Sparky Stereo, by Daniel Ramos and partners.
 Daniel Ramos directs the work; OpenAI GPT-6 Astra, through Codex, drew it, and Anthropic's Claude Sonnet, through Claude Code, integrated it (2026-10-14).
 It carries no third-party badge and no Sparky logo.
 The Oxygen icon theme (David Miller, David Vignoni, Johann Ollivier Lapeyre, Kenneth Wimer, Nuno Pinheiro and Riccardo Iaconelli, per Debian's copyright record) was a style reference only; no Oxygen artwork was copied.

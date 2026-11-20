@@ -1,58 +1,39 @@
-# StereoDroid
+# StereoDroidVR
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23309026.svg)](https://doi.org/10.5281/zenodo.23309026)
 
-StereoDroid is a planned way to use an Android phone in a Cardboard-style viewer as a head-tracked VR headset for SteamVR on Linux. ALVR will send video from the PC to PhoneVR on the phone, while the phone sends head pose and commands back. The phone uses its sensors for head tracking and reprojects the last received frame while the next one is in transit.
+StereoDroidVR is the Android phone headset project for PC VR with head tracking. The PC renders the world; the phone, in a Cardboard-style viewer, decodes and presents the two eyes and reports head orientation.
 
-The project is planned as a contribution to current ALVR upstream, including bringing PhoneVR up to date with it, and as Linux and Sparky Stereo OS packaging. The name was reserved on 2026-10-10. Nothing is built yet.
+The complete tracked RDP headset is not yet qualified. Earlier work proves individual parts: Android orientation and camera delivery through RDP, and OpenVR programs through xrizer into the PC's OpenXR runtime. The earlier PhoneVR/ALVR experiments prove their own transport and viewer, not this RDP integration. This repository currently contains documentation; it does not yet contain the Android application source or a buildable APK target.
 
-“Droid” is used descriptively. StereoDroid is not affiliated with any trademark holder.
+## One paired session
 
-## How it is planned to work
+KDE Connect pairing is required before connecting. Picture and head pose use the same authenticated RDP session: video travels to the phone, and orientation returns on the edition's dynamic virtual channel. Camera frames use RDP camera redirection for hand tracking on the PC. A separate ALVR or WiVRn transport is not part of this design.
 
-ALVR's server will run on the PC and use SteamVR/OpenVR to receive the rendered view and stream it to PhoneVR. PhoneVR is the open phone client, built on the Cardboard SDK. The phone sends its head pose and commands back over the same connection. The phone is the display the PC drives; it does not render the game.
+OpenXR is the PC rendering boundary. OpenVR applications reach it through xrizer. Running an OpenVR application this way does not establish that the SteamVR runtime itself works with the phone; that qualification remains separate.
 
-When the phone connects, the desktop is planned to add a monitor in the viewer's mode at the phone's native resolution, like a 3D TV when plugged in. The phone will report its panel resolution, DPI, and refresh rate. The PC will render at that resolution, with half the panel width for each eye and no scaling.
+Connection adds a virtual monitor already in the headset mode. Each source hands Stereo KWin full side by side, left eye first, at the chosen resolution per eye. KWin owns the output conversion. The phone link keeps half side by side for latency; it is an encoding choice of the link, not another game setting.
 
-The phone tracks head orientation, but accelerometers alone cannot provide reliable position. Position inferred by double-integrating acceleration drifts quickly. StereoDroid will use a neck model for small natural parallax. Camera tracking such as ARCore is not planned.
+Depth limits belong to the person's Display Settings and are applied once. The headset uses the edition's existing headset separation policy. No application rescales those limits or adds another depth control.
 
-The user can recenter from a PC hotkey or gamepad combination. Phone settings will offer gyroscope and accelerometer orientation, which is steadier near metal and speakers, or magnetometer-assisted orientation to reduce slow yaw drift over long sessions. The phone app will include figure-eight sensor calibration.
+## Tracking, lenses and sound
 
-While the phone is in the viewer, touch input is disabled and the gamepad connects to the PC. The phone's volume keys control display brightness while the app is in the foreground, without special permission. Brightness can also be controlled from KDE over the command channel. The same channel may report battery level and temperature and support do-not-disturb, keep-screen-on, lens, and eye-distance settings. Battery and temperature reporting is a proposal for review. Heat will be a user setting: “Automatic (ease off when hot)” or “Full power until it drops.”
+The RDP orientation prototype uses Android's fused game rotation vector, with an explicit compass-assisted choice. The PC receives the original capture timestamp and converts the orientation into its head coordinate system. Rotation alone does not establish measured position. Recentering, sensor restart, stale input, permission revocation and reconnect must preserve explicit tracking state; a lost source must not silently become an untracked session.
 
-## The viewer
+The viewer's lens calibration and presentation must be qualified with tracking enabled, including retained-frame reprojection and both landscape mountings. Existing PhoneVR/Cardboard results are evidence for that viewer, not proof that the RDP viewer already implements the same behavior.
 
-The phone goes into a Cardboard-style viewer: a holder with two lenses.
-Such viewers cost little and are sold almost everywhere: a [search for "vr glasses for smartphone" on AliExpress](https://www.aliexpress.com/w/wholesale-vr-glasses-for-smartphone.html) opens in your own country and shows what is on sale there.
-The same search also lists headsets that come with their own screens: the kind meant here is the open one, with a front that opens so a phone fits inside.
-[Flat Headset](https://github.com/Sparky-OS/flat-headset), which already works, is tested with a VR Shinecon viewer.
+Room-speaker audio must remain anchored to the room as the head turns. Earlier isolated rotation tests do not prove a complete continuously tracked 5.1 or 7.1 path. That integration remains open.
 
-## Sound
+## Related programs
 
-The sound setting will read “Sound: on the PC (recommended) / streamed to the phone.” Sound stays on the PC by default and plays through the user's headphones or speakers. The phone receives video and sends head pose and commands, without audio decode or Bluetooth transmission on the phone. This reduces phone work, streaming, and battery use. A large-battery, high-DPI phone is a good fit. Bluetooth can add about 100–200 ms of sound delay unless a low-latency codec such as aptX Low Latency or LC3/LE Audio is used, or a dongle headset is used. Both paths need measurement.
+[Flat Headset](https://github.com/Sparky-OS/flat-headset) is the static stereo desktop and movie receiver, with no head tracking. StereoDroidVR is the separate tracked Android program. iStereoVR is the corresponding future tracked iPhone program. Automatic switching between the static and tracked programs is separate work.
 
-The PC keeps the game's multichannel 5.1 or 7.1 mix whole to the audio output. The planned sound modes are Headphones and Room speakers. Headphones use binaural rendering for ordinary headphones and turn the sound field with the head pose. For a headset that accepts multichannel audio, the PC can send the multichannel mix directly.
-
-Room speakers will send the game's multichannel mix to physical speakers, such as 5.1 analog outputs or HDMI LPCM or passthrough to an AV receiver. This avoids Bluetooth delay. The mode will counter-rotate the game's head-relative sound field by head yaw so that sounds stay anchored to the room. The proposed path is to encode the 5.1 or 7.1 mix to ambisonics, rotate it by negative head yaw, and decode it to the configured speaker layout. The PipeWire spatializer controls and packaged open rotators need investigation. Their latency and the head-tracked binaural path need measurement before either is promised to work.
-
-## Links and video
-
-The planned links are home Wi-Fi by default, the PC's own hotspot with the phone connected directly, or USB cable. KDE Connect will be optional. The phone is also planned to be found over the local network through UPnP. The hotspot avoids the home router and needs no extra dongle. USB avoids Wi-Fi and charges the phone. The link options need measurement.
-
-The video encoder will aim for a steady bitrate and adapt slowly. Keyframe work will be spread to limit visible artifacts. StereoDroid will render and encode the full panel evenly at native resolution. It will not use foveated streaming. ALVR's foveated encoding will be off. Artifacts and latency need measurement at each setting.
-
-## Movie mode
-
-The phone app is also planned as a DLNA renderer. Universal Media Server or another DLNA server can send a movie to the phone for decoding there. A stereo movie shows split per eye with the lens correction, and a 2D movie as one flat screen to both eyes. Brightness and volume can be set from the PC or from any DLNA controller.
-
-## Related project
-
-[Flat Headset](../flat-headset/README.md) is the no-tracking sibling. It uses the phone as a 3D desktop screen without head tracking.
+ALVR and WiVRn remain use-only references for this project. Their contribution policies were rechecked on 2026-11-20: [ALVR](https://github.com/alvr-org/ALVR/blob/main/CONTRIBUTING.md) prohibits AI contributions, and [WiVRn](https://github.com/WiVRn/WiVRn/blob/master/AGENTS.md) prohibits agent pull requests and issue interaction. No contribution to either is planned here.
 
 ## Sparky Stereo OS
 
-StereoDroid is planned as part of [Sparky Stereo OS](https://github.com/Sparky-OS/sparky-stereo-os). Its design follows the [house formats](https://github.com/Sparky-OS/sparky-stereo-os/blob/main/docs/house-formats.md) used by that project.
+StereoDroidVR is part of [Sparky Stereo OS](https://github.com/Sparky-OS/sparky-stereo-os). Its design follows the edition's [house formats](https://github.com/Sparky-OS/sparky-stereo-os/blob/main/docs/house-formats.md). The repository URL keeps its existing spelling. “Droid” is used descriptively; StereoDroidVR is not affiliated with any trademark holder.
 
 Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł "pavroo" Pijanowski).
 
-Licence: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL, the licence of KDE Connect for Android, so the code can go upstream to KDE unchanged (texts in `LICENSES/`).
+Licence of this repository: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL (texts in `LICENSES/`). Dependencies retain their own licences; see [ATTRIBUTIONS.md](ATTRIBUTIONS.md).

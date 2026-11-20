@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 type: software
-title: "StereoDroid: a phone in a Cardboard-style viewer as a VR headset for SteamVR on Linux"
-abstract: "StereoDroid is a planned way to use an Android phone in a Cardboard-style viewer as a head-tracked VR headset for SteamVR on Linux, through ALVR and PhoneVR. Part of Sparky Stereo OS. This snapshot is the design; nothing is built yet. Licence: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL, the licence of KDE Connect for Android."
+title: "StereoDroidVR: a phone in a Cardboard-style viewer as a VR headset for SteamVR on Linux"
+abstract: "StereoDroidVR is the Android phone headset project for PC VR with head tracking. KDE Connect pairing is required; picture, head pose and camera redirection share one RDP session. PC applications reach OpenXR, with OpenVR through xrizer. The complete tracked headset remains unqualified; this repository contains documentation, not an Android build target."
 authors:
   - family-names: "Ramos"
     given-names: "Daniel Campos"
@@ -16,7 +16,7 @@ keywords:
   - "virtual reality"
   - "Cardboard"
   - "SteamVR"
-  - "ALVR"
-  - "PhoneVR"
+  - "RDP"
+  - "OpenXR"
   - "Android"
   - "Linux"
