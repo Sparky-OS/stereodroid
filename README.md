@@ -4,7 +4,7 @@
 
 StereoDroidVR is the Android phone headset project for PC VR with head tracking. The PC renders the world; the phone, in a Cardboard-style viewer, decodes and presents the two eyes and reports head orientation.
 
-The complete tracked RDP headset is not yet qualified. Earlier work proves individual parts: Android orientation and camera delivery through RDP, and OpenVR programs through xrizer into the PC's OpenXR runtime. The earlier PhoneVR/ALVR experiments prove their own transport and viewer, not this RDP integration. This repository currently contains documentation; it does not yet contain the Android application source or a buildable APK target.
+The complete tracked RDP headset is not yet qualified. Earlier work proves individual parts: Android orientation and camera delivery through RDP, and OpenVR programs through xrizer into the PC's OpenXR runtime. The earlier PhoneVR/ALVR experiments prove their own transport and viewer, not this RDP integration. This repository contains documentation. The Android implementation is the StereoDroidVR function in [Flat Headset’s shared application source](https://github.com/Sparky-OS/flat-headset), with its own launcher entry and the same KDE Connect identity and pairing as the flat receiver.
 
 ## One paired session
 
@@ -26,7 +26,7 @@ Room-speaker audio must remain anchored to the room as the head turns. Earlier i
 
 ## Related programs
 
-[Flat Headset](https://github.com/Sparky-OS/flat-headset) is the static stereo desktop and movie receiver, with no head tracking. StereoDroidVR is the separate tracked Android program. iStereoVR is the corresponding future tracked iPhone program. Automatic switching between the static and tracked programs is separate work.
+[Flat Headset](https://github.com/Sparky-OS/flat-headset) is the static stereo desktop and movie receiver, with no head tracking. StereoDroidVR is the tracked function in that same Android application, reached through its own icon. iStereoVR is the corresponding future tracked iPhone program. Choosing the other Android function ends the old session and starts a new one with the existing pairing. Seamless automatic switching between functions is separate work.
 
 ALVR and WiVRn remain use-only references for this project. Their contribution policies were rechecked on 2026-11-20: [ALVR](https://github.com/alvr-org/ALVR/blob/main/CONTRIBUTING.md) prohibits AI contributions, and [WiVRn](https://github.com/WiVRn/WiVRn/blob/master/AGENTS.md) prohibits agent pull requests and issue interaction. No contribution to either is planned here.
 
